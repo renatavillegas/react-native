@@ -155,37 +155,9 @@ export default class Home extends React.Component {
             pokeData:[]
         }
     }
-    componentDidMount = () =>{
-        this.getData();
-        this.getPokemonData();
-    }
     goToDetails = (item) =>{
         const {navigation} = this.props;
         this.props.navigation.navigate('Details', {screen:'Details', item:item})
-    }
-    getData = () =>{
-        const  params = {
-            page:this.state.randomNumber,
-            pageSize: 50
-        }
-        gotApi.get("/characters?page="+params.page+"&pageSize="+params.pageSize).then(result => {
-            this.setState({
-                gotData: result.data
-            })
-            console.log("CHARACTERS: ", result.data)
-        })
-    }
-    getPokemonData = () =>{
-        const  params = {
-            offset:0,
-            limit: 50
-        }
-        pokeApi.get("/pokemon?offset="+params.offset+"&limit="+params.limit).then(result => {
-            this.setState({
-                pokeData: result.data.results
-            })
-            console.log("CHARACTERS: ", result.data.result)
-        })
     }
     renderItem =({item}) =>{
         return(
