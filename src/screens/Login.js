@@ -9,6 +9,7 @@ export default class Login extends React.Component {
     constructor(props){
         super(props);
         this.state={
+            email:'',
             background: require('../assets/images/background.png')
         }
     }
@@ -25,6 +26,15 @@ export default class Login extends React.Component {
         //console.warn("Go to Home");
     }
 
+    validate = () => {
+            const { email } = this.state
+            console.log('Validating Email Here!', email)
+            var re =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+            if(!re.test(email)){
+                console.warn("Invalid email")
+            }
+    }
+            
     render() {
         return (
             <View style={styles.mainView}>
@@ -35,8 +45,14 @@ export default class Login extends React.Component {
                         <Text style={styles.titleText}>{'My library'}</Text>
                     </View>
                     <View style={styles.textInputView}>
-                        <TextInput style={styles.textInput} keybordType ='email-address' placeholder={'EMAIL'}/>
-                        <TextInput style={styles.textInput} placeholder={'PASSWORD'}/>
+                        <TextInput style={styles.textInput} 
+                            keybordType ='email-address' 
+                            placeholder={'EMAIL'}
+                            onChangeText={(email) => this.setState({email})}  
+                            onBlur={e => this.validate()}
+                            value={this.state.text}
+                            onb/>  
+                        <TextInput style={styles.textInput} secureTextEntry={true} placeholder={'PASSWORD'}/>
                         <View style = {styles.buttonView}>
                         <MyButton title="Login" screen = 'Home' navigation = {this.props.navigation}/>
                         </View>
