@@ -28,9 +28,11 @@ export default class MyFlatList extends React.Component{
                 </TouchableOpacity>
                 <Rating
                         ratingCount={10}
-                        startingValue={item.rating}
-                        style={{paddingVertical: 10}}
-                        imageSize={15}/>
+                        startingValue={item.rating}     
+                        style={styles.rating}
+                        readonly={true}
+                        showRating={false}
+                        imageSize={15}/> 
             </View>
         )
     }
@@ -65,9 +67,12 @@ const styles = StyleSheet.create({
     },
     listView: 
     {
-        height: Dimensions.get('window').height -250,
+        //height: Dimensions.get('window').height -250,
         margin:16, 
         flex:1
+    }, 
+    rating:{
+        paddingVertical: 10
     }
 })
 

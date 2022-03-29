@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Button, Text, View, StyleSheet, Image, ScrollView, ActivityIndicator, ImageBackground,
         TextInput, TouchableOpacity, FlatList} from 'react-native';
-import MyButton from "../components/MyButton";
 import MyFlatList from "../components/MyFlatList";
 import { Axios } from "axios";
 import gotApi from '../services/gotApi'
@@ -51,7 +50,7 @@ const DATA = [
         author:' Charlotte Bronte ',
         date: dayjs('2022-05').format("MM/YYYY"),
         pages: '465',
-        rating: '',
+        rating: '0',
         image: require('../assets/images/books/JaneEyre.jpg')
     },
     {
@@ -220,11 +219,11 @@ export default class Home extends React.Component {
 //a.date.localeCompare(b.date)
 const styles = StyleSheet.create({
     homeView:{
-        height:'100%', 
         backgroundColor: 'black',  
+        flex:1,
     }, 
     imageBackground: {
-        height:'100%', 
+        flex:1
     },
     hometitle: 
     {

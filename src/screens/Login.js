@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     },
     imageBackground: {
         height:'100%', 
+        flex:1
     },
     titleTextView:{
         flex: 0.5, 
